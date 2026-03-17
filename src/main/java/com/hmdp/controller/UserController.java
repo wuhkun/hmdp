@@ -35,10 +35,10 @@ public class UserController {
     /**
      * 发送手机验证码
      */
-    @PostMapping("code")
-    public Result sendCode(@RequestParam("phone") String phone, HttpSession session) {
+    @PostMapping("/code")
+    public Result sendCode(@RequestParam("phone") String phone) {
         log.info("短信登录发送");
-        return userService.sendCode(phone,session);
+        return userService.sendCode(phone);
     }
 
     /**
@@ -46,9 +46,9 @@ public class UserController {
      * @param loginForm 登录参数，包含手机号、验证码；或者手机号、密码
      */
     @PostMapping("/login")
-    public Result login(@RequestBody LoginFormDTO loginForm, HttpSession session){
+    public Result login(@RequestBody LoginFormDTO loginForm){
 
-        return userService.login(loginForm,session);
+        return userService.login(loginForm);
     }
 
     /**
